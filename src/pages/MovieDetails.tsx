@@ -36,9 +36,9 @@ const MovieDetails = () => {
 			JSON.stringify([...favourite, newFavouriteMovie])
 		);
 	};
-	if (movie) {
-		console.log(movie.genres);
-	}
+	// if (movie) {
+	// 	console.log(movie.genres);
+	// }
 
 	return (
 		<div className="details">
@@ -91,7 +91,7 @@ const MovieDetails = () => {
 				</Row>
 			)}
 
-			{favourite && (
+			{favourite.length > 0 && (
 				<>
 					<h1>Favourties</h1>
 					<MoviesList results={favourite} />
