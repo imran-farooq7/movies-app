@@ -1,10 +1,9 @@
 import { useSelector } from "react-redux";
 import Loading from "../components/Loading";
-import MoviesList from "../components/MoviesList";
+import MoviePaginate from "../components/MoviePaginate";
 import SearchInput from "../components/SearchInput";
 import useLoading from "../hooks/useLoading";
 import { RootState } from "../store/store";
-import MoviePaginate from "../components/MoviePaginate";
 
 const Home = () => {
 	const { loading, setLoading } = useLoading();
