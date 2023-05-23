@@ -6,9 +6,10 @@ import { getMovies } from "../store/moviesSlice";
 import fetchMovies from "../utils/api";
 type Props = {
 	setLoading: (value: boolean) => void;
+	loading: boolean;
 };
 
-const SearchInput = ({ setLoading }: Props) => {
+const SearchInput = ({ setLoading, loading }: Props) => {
 	const dispatch = useDispatch();
 	// const url = useSelector((state: RootState) => state.movies.url);
 	const [searchInput, setSearchInput] = useState("");
@@ -40,6 +41,7 @@ const SearchInput = ({ setLoading }: Props) => {
 				className="w-50"
 				style={{ borderRadius: "20px" }}
 				placeholder="Search movie"
+				disabled={loading}
 			/>
 			{/* <Button type="submit">Search</Button> */}
 		</Form>

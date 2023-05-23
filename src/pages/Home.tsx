@@ -4,6 +4,7 @@ import MoviesList from "../components/MoviesList";
 import SearchInput from "../components/SearchInput";
 import useLoading from "../hooks/useLoading";
 import { RootState } from "../store/store";
+import MoviePaginate from "../components/MoviePaginate";
 
 const Home = () => {
 	const { loading, setLoading } = useLoading();
@@ -14,8 +15,8 @@ const Home = () => {
 	return (
 		<div className="mx-auto w-100 ">
 			<h1 className="text-center">Welcome To MDB</h1>
-			<SearchInput setLoading={setLoading} />
-			{loading ? <Loading /> : <MoviesList results={results} />}
+			<SearchInput setLoading={setLoading} loading={loading} />
+			{loading ? <Loading /> : <MoviePaginate movies={results} />}
 		</div>
 	);
 };
