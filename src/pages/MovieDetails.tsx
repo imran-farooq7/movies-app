@@ -30,15 +30,18 @@ const MovieDetails = () => {
 
 	const addtoFavourtie = () => {
 		const newFavouriteMovie = movie;
-		setFavourite((prev) => [...prev, newFavouriteMovie]);
-		localStorage.setItem(
-			"favorites",
-			JSON.stringify([...favourite, newFavouriteMovie])
-		);
+		if (!favourite.includes(newFavouriteMovie)) {
+			setFavourite((prev) => [...prev, newFavouriteMovie]);
+			localStorage.setItem(
+				"favorites",
+				JSON.stringify([...favourite, newFavouriteMovie])
+			);
+		}
 	};
 	// if (movie) {
 	// 	console.log(movie.genres);
 	// }
+	// console.log(favourite.map((fav) => fav.id));
 
 	return (
 		<div className="details">
