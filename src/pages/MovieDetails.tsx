@@ -12,7 +12,7 @@ import MoviesList from "../components/MoviesList";
 const MovieDetails = () => {
 	const [movie, setMovie] = useState<any>("");
 	const { loading, setLoading } = useLoading();
-	const [favourite, setFavourite] = useState<any[]>([]);
+	const [favourite, setFavourite] = useState([]);
 
 	const { id } = useParams();
 
@@ -27,10 +27,14 @@ const MovieDetails = () => {
 			setMovie(res);
 		});
 	}, []);
+	console.log(favourite);
 
 	const addtoFavourtie = () => {
 		const newFavouriteMovie = movie;
-		if (!favourite.includes(newFavouriteMovie)) {
+		const isInFavourite = favourite.some((f) => f.id === newFavouriteMovie.id);
+		if (isInFavourite) {
+			alert("movie already in favorites");
+		} else {
 			setFavourite((prev) => [...prev, newFavouriteMovie]);
 			localStorage.setItem(
 				"favorites",

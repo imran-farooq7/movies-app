@@ -9,11 +9,12 @@ const Home = () => {
 	const { loading, setLoading } = useLoading();
 
 	const { results } = useSelector((state: RootState) => state.movies.url);
-	console.log(results);
+	// console.log(results);
 
 	return (
 		<div className="mx-auto w-100 ">
 			<h1 className="text-center">Welcome To MDB</h1>
+
 			<SearchInput setLoading={setLoading} loading={loading} />
 			{loading ? <Loading /> : <MoviePaginate movies={results} />}
 		</div>
