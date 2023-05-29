@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import { IconContext } from "react-icons";
 import { BiMovie, BiTime } from "react-icons/bi";
-import { BsCalendarDate, BsHeart } from "react-icons/bs";
-import { useParams } from "react-router-dom";
+import { BsArrowLeft, BsCalendarDate, BsHeart } from "react-icons/bs";
+import { Link, useParams } from "react-router-dom";
 import Loading from "../components/Loading";
 import useLoading from "../hooks/useLoading";
 import fetchMovies from "../utils/api";
@@ -27,7 +27,7 @@ const MovieDetails = () => {
 			setMovie(res);
 		});
 	}, []);
-	console.log(favourite);
+	// console.log(favourite);
 
 	const addtoFavourtie = () => {
 		const newFavouriteMovie = movie;
@@ -42,6 +42,7 @@ const MovieDetails = () => {
 			);
 		}
 	};
+
 	// if (movie) {
 	// 	console.log(movie.genres);
 	// }
@@ -91,6 +92,10 @@ const MovieDetails = () => {
 							<BsHeart />
 							<span className="ms-1">Add to favourite</span>
 						</Button>
+						<Link className="btn btn-success ms-2 p-2" to="/">
+							<BsArrowLeft />
+							<span className="ms-1">Back to home</span>{" "}
+						</Link>
 					</Col>
 					{/* <Button variant="primary" onClick={addtoFavourtie}>
 						Add to favourite
