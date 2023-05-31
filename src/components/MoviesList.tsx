@@ -6,7 +6,7 @@ type Props = {
 };
 const MoviesList = (props: Props) => {
 	const { results } = props;
-	if (results?.length === 0) {
+	if (!results) {
 		return <h1>Movie is not found</h1>;
 	}
 

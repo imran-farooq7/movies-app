@@ -18,4 +18,17 @@ const fetchMovies = async (url: string, params?: any) => {
 		console.log(error);
 	}
 };
+export const fetchPopularMovies = async () => {
+	try {
+		const { data } = await axios.get(
+			`${baseUrl}/movie/popular?language=en-US&page=1`,
+			{
+				headers,
+			}
+		);
+		return data;
+	} catch (error) {
+		console.log(error);
+	}
+};
 export default fetchMovies;

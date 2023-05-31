@@ -1,17 +1,22 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Loading from "../components/Loading";
 import MoviePaginate from "../components/MoviePaginate";
 import SearchInput from "../components/SearchInput";
 import Select from "../components/Select";
 import useLoading from "../hooks/useLoading";
 import { RootState } from "../store/store";
+import { fetchPopularMovies } from "../utils/api";
+import { getMovies } from "../store/moviesSlice";
 
 const Home = () => {
+	const dispatch = useDispatch();
 	const { results } = useSelector((state: RootState) => state.movies.url);
 	const { loading, setLoading } = useLoading();
 	const [year, setYear] = useState("");
 	const [rating, setRating] = useState("");
+	// const [movies, setMovies] = useState();
+
 	const years = [
 		"Year",
 		"2000",
@@ -39,10 +44,18 @@ const Home = () => {
 		"2022",
 		"2023",
 	];
+	useEffect(() => {
+		setLoading(true);
+		fetchPopularMovies().then((res) => {
+			console.log(res);
+			setLoading(false);
+			dispatch(getMovies(res));
+		});
+	}, []);
+
 	const ratings = ["rating", "populatiry", "votes"];
-	// const [filterMovies, setFilterMovies] = useState();
 	let filterMovies = results;
-	console.log(results);
+	// console.log(results);
 
 	if (year) {
 		filterMovies = results?.filter(
